@@ -1,0 +1,119 @@
+buildscript {
+    ext {
+        springBootVersion = kanbanSpringBootVersion
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+subprojects {
+    apply plugin: "java"
+    apply plugin: "io.spring.dependency-management"
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.boot:spring-boot-dependencies:$springBootVersion"
+        }
+    }
+
+    sourceCompatibility = project_jdk
+    targetCompatibility = project_jdk
+}
+
+/*
+plugins {
+	id 'org.springframework.boot' version '2.3.0.M2'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+}
+
+group = 'com.jp'
+version = kanbanAppVersion
+sourceCompatibility = project_jdk
+
+configurations {
+	developmentOnly
+	runtimeClasspath {
+		extendsFrom developmentOnly
+	}
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+	maven { url 'https://repo.spring.io/milestone' }
+}
+
+dependencies {
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+}
+
+subprojects {
+    // Eclipse用のプロジェクト作成のためのplugin
+    apply plugin: 'eclipse'
+    apply plugin: 'java'
+    apply plugin: 'idea'
+
+    apply plugin: "org.springframework.boot"
+
+    // 全ソースがUTF-8であることを指定する、
+    // この記述であればsourceSetが増えても対応可能。
+    def defaultEncoding = 'UTF-8'
+    tasks.withType(JavaCompile) {
+        options.encoding = defaultEncoding
+    }
+
+    // コンパイル対象バージョンの指定
+    sourceCompatibility = project_jdk
+    targetCompatibility = project_jdk
+
+    // version指定
+    version = kanbanAppVersion
+
+    repositories {
+        mavenCentral()
+    }
+
+    // 全てのprojectで設定される依存性
+    dependencies {
+        compile 'org.projectlombok:lombok:1.16.8'
+        testCompile 'junit:junit:4.12'
+    }
+
+    test {
+		useJUnitPlatform()
+	}
+}
+
+project(':kanban-server') {
+	apply plugin: "org.springframework.boot"
+	dependencies {
+		implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+		implementation 'org.springframework.boot:spring-boot-starter-security'
+		implementation 'org.springframework.boot:spring-boot-starter-web'
+		compileOnly 'org.projectlombok:lombok'
+		annotationProcessor 'org.projectlombok:lombok'
+		testImplementation('org.springframework.boot:spring-boot-starter-test') {
+			exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+		}
+		testImplementation 'org.springframework.security:spring-security-test'
+	}
+}
+
+
+project(':kanban-config') {
+}
+
+project(':kanban-database') {
+}
+*/
