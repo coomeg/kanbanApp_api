@@ -1,10 +1,12 @@
 spring:
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3305/mydb?useSSL=false
+    url: jdbc:mysql://db/mydb?useSSL=false
     username: sboot
     password: sboot
   jpa:
     database: MYSQL
     hibernate:
       ddl-auto: update
+server:
+  port: 2941

@@ -11,7 +11,7 @@ pluginManagement {
 		}
 	}
 }
-rootProject.name = 'kanbannapp'
+rootProject.name = 'kanbanapp'
 
 include 'kanban-server'
 include 'kanban-config'
