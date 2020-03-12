@@ -14,8 +14,7 @@ public class KanbanSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
     	// ログイン処理の認証ルールを設定
         http.authorizeRequests()
-                .antMatchers("/",
-                		"/login").permitAll() // 認証なしでアクセス可能なパス
+                .antMatchers("/public/**").permitAll() // 認証なしでアクセス可能なパス
                 .anyRequest().authenticated() // それ以外は認証が必要
                 .and()
             .formLogin()
@@ -24,6 +23,7 @@ public class KanbanSecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("userId") // ログインフォームのユーザー欄のname属性を設定
                 .passwordParameter("password") // ログインフォームのパスワード欄のname属性を設定
                 .successForwardUrl("/") // ログイン成功時に遷移するURL
+                .failureUrl("/login") // ログイン失敗時に遷移するURL
                 .permitAll()
                 .and()
             .logout()
