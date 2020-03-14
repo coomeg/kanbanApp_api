@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(path = "/v1/users")
+@RequestMapping(path = "/users")
 public class TestController {
 
 	@GetMapping("")
