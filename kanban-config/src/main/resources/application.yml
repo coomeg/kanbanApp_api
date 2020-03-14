@@ -1,4 +1,6 @@
 spring:
+  resources:
+    static-locations: "classpath:public/"
   datasource:
     driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://db/mydb?useSSL=false
