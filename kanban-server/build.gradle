@@ -2,6 +2,7 @@ apply plugin: "org.springframework.boot"
 
 dependencies {
 	compile project(":kanban-config")
+	compile project(":kanban-database")
 
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
@@ -15,4 +16,5 @@ dependencies {
 	compile("mysql:mysql-connector-java")
 	implementation('org.springframework.boot:spring-boot-starter-data-redis')
 	implementation('org.springframework.session:spring-session-data-redis')
+	implementation 'org.flywaydb:flyway-core:6.4.1'
 }
